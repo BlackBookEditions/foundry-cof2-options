@@ -1,0 +1,39 @@
+{
+  "id": "cof2-options",
+  "title": "Chroniques Oubliées Fantasy 2e édition : Options",
+  "description": "Module qui ajoute au système Chroniques Oubliées v2 des règles issues de l'Atlas d'Osgild et des règles optionnelles",
+  "url": "#{URL}#",
+  "version": "#{VERSION}#",
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#",
+  "compatibility": {
+    "minimum": "14",
+    "maximum": "14",
+    "verified": "14"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "co2",
+        "type": "system"
+      }
+    ],
+    "requires": [],
+    "optional": []
+  },
+  "authors": [
+    {
+      "name": "kristov"
+    }
+  ],
+  "esmodules": ["cof2-options.mjs"],
+  "styles": ["cof2-options.css"],
+  "languages": [
+    {
+      "lang": "fr",
+      "name": "French",
+      "path": "lang/fr.json"
+    }
+  ],
+  "socket": false
+}

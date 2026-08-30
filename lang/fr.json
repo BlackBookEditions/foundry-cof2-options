@@ -1,0 +1,65 @@
+{
+  "COF2OPTIONS": {
+    "settings": {
+      "enableSkillSystem": {
+        "name": "Système de compétences (Atlas d'Osgild)",
+        "hint": "Remplace les tests de caractéristique bruts par le système de compétences optionnel de l'Atlas d'Osgild (22 compétences, points de compétence, maîtrise). Ajoute un onglet Compétences sur la fiche de personnage."
+      }
+    },
+    "sheet": {
+      "tabs": {
+        "skills": "Compétences"
+      },
+      "mastered": "Compétence maîtrisée",
+      "pointsTooltip": "Points de compétence disponibles / pool du niveau"
+    },
+    "skills": {
+      "acrobaties": "Acrobaties",
+      "artisanat": "Artisanat",
+      "athletisme": "Athlétisme",
+      "commerce": "Commerce",
+      "connaissances": "Connaissances",
+      "discretion": "Discrétion",
+      "divertissement": "Divertissement",
+      "effraction": "Effraction",
+      "empathie": "Empathie",
+      "equitation": "Équitation",
+      "escalade": "Escalade",
+      "intimidation": "Intimidation",
+      "medecine": "Médecine",
+      "natation": "Natation",
+      "occultisme": "Occultisme",
+      "persuasion": "Persuasion",
+      "religion": "Religion",
+      "renseignement": "Renseignement",
+      "sciences": "Sciences",
+      "survie": "Survie",
+      "tromperie": "Tromperie",
+      "vigilance": "Vigilance"
+    },
+    "profiles": {
+      "arquebusier": "Arquebusier",
+      "barbare": "Barbare",
+      "barde": "Barde",
+      "chevalier": "Chevalier",
+      "druide": "Druide",
+      "ensorceleur": "Ensorceleur",
+      "forgesort": "Forgesort",
+      "guerrier": "Guerrier",
+      "magicien": "Magicien",
+      "moine": "Moine",
+      "pretre": "Prêtre",
+      "rodeur": "Rôdeur",
+      "sorcier": "Sorcier",
+      "voleur": "Voleur"
+    },
+    "dialogs": {
+      "hybridChoice": {
+        "title": "Compétences hybrides",
+        "hint": "Cette voie est issue du profil {profile}. Choisissez {count} compétence(s) dont vous obtenez la maîtrise.",
+        "confirm": "Valider",
+        "cancel": "Annuler"
+      }
+    }
+  }
+}

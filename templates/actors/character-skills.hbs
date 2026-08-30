@@ -1,0 +1,40 @@
+{{!-- COF2 Options : onglet Compétences (Atlas d'Osgild, système de compétence) --}}
+<section class="tab cof2-options-skills{{#if tabs.skills.active}} active{{/if}}" data-group="primary" data-tab="skills">
+  <div class="section-container">
+    <div class="section-header">
+      <h4>{{localize "COF2OPTIONS.sheet.tabs.skills"}}</h4>
+      {{#with (cof2OptionsEconomy actor) as |economy|}}
+        <div class="cof2-skills-economy" data-tooltip="{{localize 'COF2OPTIONS.sheet.pointsTooltip'}}">
+          <i class="fas fa-fw fa-star"></i>
+          {{economy.available}} / {{economy.pool}}
+        </div>
+      {{/with}}
+    </div>
+    <div class="section-body-no-flex">
+      <ol class="cof2-skills-list item-list">
+        {{#each (cof2OptionsSkills actor) as |skill|}}
+          <li class="cof2-skill{{#if skill.mastered}} mastered{{/if}}" data-skill-id="{{skill.id}}">
+            <a class="cof2-skill-name" data-action="cof2OptionsRollSkill" data-skill-id="{{skill.id}}" data-ability="{{lookup skill.abilities 0}}">
+              {{localize (concat "COF2OPTIONS.skills." skill.id)}}
+            </a>
+            <span class="cof2-skill-abilities">
+              {{#each skill.abilities}}{{#unless @first}} / {{/unless}}{{localize (concat "CO.abilities.short." this)}}{{/each}}
+            </span>
+            {{#if skill.mastered}}
+              <i class="fas fa-shield-alt cof2-skill-mastered" data-tooltip="{{localize 'COF2OPTIONS.sheet.mastered'}}"></i>
+            {{/if}}
+            <div class="cof2-skill-controls">
+              <a class="cof2-skill-decrease{{#unless skill.canDecrease}} disabled{{/unless}}" data-action="cof2OptionsDecreaseSkill" data-skill-id="{{skill.id}}">
+                <i class="fas fa-minus"></i>
+              </a>
+              <span class="cof2-skill-bonus">{{numberFormat skill.bonus decimals=0 sign=true}}</span>
+              <a class="cof2-skill-increase{{#unless skill.canIncrease}} disabled{{/unless}}" data-action="cof2OptionsIncreaseSkill" data-skill-id="{{skill.id}}">
+                <i class="fas fa-plus"></i>
+              </a>
+            </div>
+          </li>
+        {{/each}}
+      </ol>
+    </div>
+  </div>
+</section>

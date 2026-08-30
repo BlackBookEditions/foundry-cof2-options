@@ -1,0 +1,59 @@
+.cof2-options-skills .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cof2-options-skills .section-header .cof2-skills-economy {
+  font-weight: bold;
+}
+.cof2-options-skills .cof2-skills-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cof2-options-skills .cof2-skills-list .cof2-skill {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.25em 0.5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.cof2-options-skills .cof2-skills-list .cof2-skill.mastered .cof2-skill-name {
+  font-weight: bold;
+}
+.cof2-options-skills .cof2-skills-list .cof2-skill .cof2-skill-name {
+  flex: 1 1 auto;
+}
+.cof2-options-skills .cof2-skills-list .cof2-skill .cof2-skill-abilities {
+  flex: 0 0 auto;
+  opacity: 0.7;
+  font-size: 0.9em;
+}
+.cof2-options-skills .cof2-skills-list .cof2-skill .cof2-skill-mastered {
+  flex: 0 0 auto;
+  opacity: 0.8;
+}
+.cof2-options-skills .cof2-skills-list .cof2-skill .cof2-skill-controls {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+}
+.cof2-options-skills .cof2-skills-list .cof2-skill .cof2-skill-controls .cof2-skill-bonus {
+  min-width: 2em;
+  text-align: center;
+}
+.cof2-options-skills .cof2-skills-list .cof2-skill .cof2-skill-controls a.disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+.cof2-hybrid-choice {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+.cof2-hybrid-choice .cof2-hybrid-option {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+}
