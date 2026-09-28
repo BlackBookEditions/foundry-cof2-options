@@ -18,7 +18,7 @@
               {{localize (concat "COF2OPTIONS.skills." skill.id)}}
             </a>
             <span class="cof2-skill-abilities">
-              {{#each skill.abilities}}{{#unless @first}} / {{/unless}}{{localize (concat "CO.abilities.short." this)}}{{/each}}
+              {{#each skill.abilities as |ability|}}{{#unless @first}} / {{/unless}}<a data-action="cof2OptionsRollSkill" data-skill-id="{{skill.id}}" data-ability="{{ability}}" data-tooltip="{{localize (concat "CO.abilities.long." ability)}}">{{localize (concat "CO.abilities.short." ability)}}</a>{{/each}}
             </span>
             {{#if skill.mastered}}
               <i class="fas fa-shield-alt cof2-skill-mastered" data-tooltip="{{localize 'COF2OPTIONS.sheet.mastered'}}"></i>

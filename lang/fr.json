@@ -3,7 +3,7 @@
     "settings": {
       "enableSkillSystem": {
         "name": "Système de compétences (Atlas d'Osgild)",
-        "hint": "Remplace les tests de caractéristique bruts par le système de compétences optionnel de l'Atlas d'Osgild (22 compétences, points de compétence, maîtrise). Ajoute un onglet Compétences sur la fiche de personnage."
+        "hint": "Ajoute le système de compétences optionnel de l'Atlas d'Osgild (22 compétences, points de compétence, maîtrise) aux tests de caractéristique. Ajoute un onglet Compétences sur la fiche de personnage. Le bonus de +3 de la capacité de rang 1 des voies de peuple est remplacé par la maîtrise de compétences de peuple."
       }
     },
     "sheet": {
@@ -54,11 +54,15 @@
       "voleur": "Voleur"
     },
     "dialogs": {
+      "confirm": "Valider",
+      "cancel": "Annuler",
       "hybridChoice": {
         "title": "Compétences hybrides",
-        "hint": "Cette voie est issue du profil {profile}. Choisissez {count} compétence(s) dont vous obtenez la maîtrise.",
-        "confirm": "Valider",
-        "cancel": "Annuler"
+        "hint": "Cette voie est issue du profil {profile}. Choisissez {count} compétence(s) dont vous obtenez la maîtrise."
+      },
+      "peopleChoice": {
+        "title": "Compétence de peuple",
+        "hintHuman": "En tant qu'Humain, vous maîtrisez Artisanat et une compétence de votre choix. Choisissez cette seconde compétence."
       }
     }
   }

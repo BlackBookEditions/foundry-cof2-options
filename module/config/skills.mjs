@@ -2,14 +2,13 @@
  * Les 22 compétences du système de compétence de l'Atlas d'Osgild (COF2, chapitre 1, p.223-224).
  * Chaque compétence est liée à une ou deux caractéristiques (id co2 : for/agi/con/per/cha/int/vol).
  *
- * Athlétisme est décrite dans le livre comme « (Variable) » : AGI ou FOR pour courir/sauter/lancer/soulever,
- * CON pour l'endurance. On ne retient que le choix AGI/FOR, qui est le seul repris ensuite par la règle
- * « Compétences et armure » (p.227, choix entre test de FOR sans malus d'armure ou d'AGI avec malus).
+ * Athlétisme est décrite dans le livre comme « (Variable) » : courir et sauter (AGI ou FOR), lancer loin ou soulever un objet lourd (FOR), marcher ou courir longtemps (CON).
+ * Quand une compétence a plusieurs caractéristiques, le joueur choisit celle du test sur la fiche.
  */
 export const SKILLS = {
   acrobaties: { abilities: ["agi"] },
   artisanat: { abilities: ["int"] },
-  athletisme: { abilities: ["agi", "for"] },
+  athletisme: { abilities: ["agi", "for", "con"] },
   commerce: { abilities: ["cha"] },
   connaissances: { abilities: ["int"] },
   discretion: { abilities: ["agi"] },

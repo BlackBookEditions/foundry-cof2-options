@@ -1,5 +1,17 @@
 import { MODULE_ID, SETTINGS } from "./module/config/options.mjs"
-import { isSkillSystemEnabled, getSkillsViewModel, getSkillPool, getSkillPointsSpent, getSkillPointsAvailable, getSkillCap, wireSkillsTab, onCreatePath, onDeletePath } from "./module/skills.mjs"
+import {
+  isSkillSystemEnabled,
+  getSkillsViewModel,
+  getSkillPool,
+  getSkillPointsSpent,
+  getSkillPointsAvailable,
+  getSkillCap,
+  wireSkillsTab,
+  installPeopleBonusFilter,
+  onCreatePath,
+  onUpdatePath,
+  onDeletePath,
+} from "./module/skills.mjs"
 
 Hooks.once("init", () => {
   console.info("COF2 Options | Initialisation du module...")
@@ -24,6 +36,9 @@ Hooks.once("init", () => {
       tabs.splice(idx === -1 ? tabs.length : idx, 0, { id: "skills", label: "COF2OPTIONS.sheet.tabs.skills" })
       Sheet.PARTS.skills = { template: "modules/cof2-options/templates/actors/character-skills.hbs" }
     }
+
+    // Le +3 de la capacité de rang 1 des voies de peuple est remplacé par la maîtrise (Atlas p.225)
+    installPeopleBonusFilter()
   }
 
   Handlebars.registerHelper("cof2OptionsSkills", (actor) => getSkillsViewModel(actor))
@@ -44,9 +59,10 @@ Hooks.once("i18nInit", () => {
   foundry.utils.mergeObject(game.i18n.translations, { CO: { sheet: { tabs: { character: { skills: game.i18n.localize("COF2OPTIONS.sheet.tabs.skills") } } } } })
 })
 
-// Injection UI : neutralisation du clic caractéristique + câblage de l'onglet Compétences (classe COCharacterSheet)
+// Injection UI : câblage de l'onglet Compétences (classe COCharacterSheet)
 Hooks.on("renderCOCharacterSheet", wireSkillsTab)
 
-// Maîtrise hybride : ouverture/suppression d'une voie hors profil principal
+// Maîtrise hybride (voie hors profil) et maîtrise de peuple (voie de peuple, rang 1)
 Hooks.on("createItem", onCreatePath)
+Hooks.on("updateItem", onUpdatePath)
 Hooks.on("deleteItem", onDeletePath)
