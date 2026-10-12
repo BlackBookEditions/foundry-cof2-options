@@ -1,4 +1,4 @@
-## Non publié
+## 0.8.0
 - Initialisation du module.
 - Ajout du système de compétences optionnel de l'Atlas d'Osgild (réglage, onglet Compétences, maîtrise automatique par profil/voie, points de compétence, jets).
 - Ajout des compétences de peuple (maîtrise à la capacité de rang 1 de la voie de peuple, choix libre pour l'Humain, règle de double maîtrise → points de compétence supplémentaires).
@@ -10,3 +10,6 @@
 - Correction : les +2 de double maîtrise de peuple pouvaient être retirés avec « − » et rendaient des points jamais dépensés.
 - Correction : les demi-elfes n'obtenaient pas de compétences de peuple (maîtrise désormais déterminée par la voie de peuple).
 - Les bonus permanents des capacités ne sont plus proposés dans la fenêtre d'un test de compétence (réservés aux tests de caractéristique).
+- Ajout du compendium « COF2 Options - Guide du module » (5 pages : introduction, compétences, maîtrise, fiche de personnage, limites et écarts).
+- Onglet Compétences : boutons « + » / « − » et compteur de points affichés uniquement en mode Édition.
+- Test de compétence : fenêtre de jet titrée « Test d'Acrobaties (AGI) » et message de chat « Acrobaties (AGI) ».

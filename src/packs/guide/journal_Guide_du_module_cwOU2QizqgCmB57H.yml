@@ -1,0 +1,509 @@
+_id: cwOU2QizqgCmB57H
+name: Guide du module Options
+pages:
+  - _id: aQaMFrNXW471Niy9
+    name: Introduction
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="journal-page-cof-base">
+          <h2>Introduction</h2>
+          <h3>Chroniques Oubliées Fantasy 2e édition : Options</h3>
+          <p class="lettrine">
+            Ce module ajoute au système <span class="gras">Chroniques Oubliées 2</span> des règles issues de l'<span class="gras">Atlas d'Osgild</span> et des règles optionnelles,
+            <span class="gras">sans modifier le système</span>. Chaque règle s'active séparément depuis les paramètres du monde : tant qu'elle n'est pas activée, le jeu se déroule
+            exactement comme avec le système seul.
+          </p>
+          <p class="alinea">Le module propose aujourd'hui une règle optionnelle :</p>
+          <ul>
+            <li class="puce-noire">
+              <p>
+                le <span class="gras">système de compétences</span> de l'Atlas d'Osgild (chapitre « Systèmes alternatifs »), qui ajoute aux tests de caractéristique 22 compétences
+                nommées, avec maîtrise, points de compétence et plafond de valeur.
+              </p>
+            </li>
+          </ul>
+
+          <h3>Prérequis</h3>
+          <ul>
+            <li class="puce-noire"><p>Foundry VTT version 14.</p></li>
+            <li class="puce-noire"><p>Le système Chroniques Oubliées 2 (<span class="italique">co2</span>).</p></li>
+            <li class="puce-noire">
+              <p>
+                Le module <span class="gras">Chroniques Oubliées Fantasy Livre des règles</span> (<span class="italique">cof2-base</span>) est fortement recommandé : la maîtrise des
+                compétences reconnaît les profils et les voies de peuple de ses compendiums. Un profil ou une voie de peuple créé à la main n'accorde aucune maîtrise.
+              </p>
+            </li>
+          </ul>
+
+          <h3>Activation du système de compétences</h3>
+          <p class="alinea">
+            Le MJ ouvre <span class="gras">Paramètres du jeu &gt; Configurer les paramètres</span>, onglet du module <span class="italique">Chroniques Oubliées Fantasy 2e édition :
+            Options</span>, et coche <span class="gras">« Système de compétences (Atlas d'Osgild) »</span>. Le monde doit être rechargé pour que le réglage prenne effet.
+          </p>
+          <p class="alinea">Une fois la règle active :</p>
+          <ul>
+            <li class="puce-noire"><p>un onglet <span class="gras">Compétences</span> apparaît sur la fiche de chaque Personnage ;</p></li>
+            <li class="puce-noire"><p>les tests de caractéristique restent disponibles comme d'habitude ;</p></li>
+            <li class="puce-noire">
+              <p>le bonus de +3 de la capacité de rang 1 des voies de peuple est remplacé par la maîtrise de deux compétences de peuple.</p>
+            </li>
+          </ul>
+          <p class="exemple">
+            La règle ne concerne que les Personnages. Les Rencontres (PNJ et créatures) gardent leurs tests de caractéristique habituels.
+          </p>
+
+          <h3>Contenu de ce guide</h3>
+          <ul>
+            <li class="puce-noire"><p>@UUID[Compendium.cof2-options.guide.JournalEntry.cwOU2QizqgCmB57H.JournalEntryPage.CCwqekLQvFbTu1Fk]{Les compétences} : la liste des compétences, le test et le malus d'armure.</p></li>
+            <li class="puce-noire"><p>@UUID[Compendium.cof2-options.guide.JournalEntry.cwOU2QizqgCmB57H.JournalEntryPage.Lsf0qafANNj8ONRu]{La maîtrise} : profil principal, profil hybride, compétences de peuple.</p></li>
+            <li class="puce-noire"><p>@UUID[Compendium.cof2-options.guide.JournalEntry.cwOU2QizqgCmB57H.JournalEntryPage.aJ0nQq1LyiPCMM4m]{Sur la fiche de personnage} : l'onglet Compétences, les points de compétence et les jets.</p></li>
+            <li class="puce-noire"><p>@UUID[Compendium.cof2-options.guide.JournalEntry.cwOU2QizqgCmB57H.JournalEntryPage.HaqlOwpAEmpo3tX8]{Limites et écarts} : ce que le module ne gère pas, et les écarts avec le livre.</p></li>
+          </ul>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 100000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!cwOU2QizqgCmB57H.aQaMFrNXW471Niy9'
+  - _id: CCwqekLQvFbTu1Fk
+    name: Les compétences
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="journal-page-cof-base">
+          <h2>Les compétences</h2>
+          <p class="lettrine">
+            Le système de compétences de l'Atlas d'Osgild (p.223-227) remplace la lecture « large » des voies par une liste concrète de 22 compétences. Chaque compétence est liée à une
+            caractéristique, parfois à plusieurs, et possède un bonus qui progresse avec les points de compétence. Toutes les compétences sont à +0 tant qu'aucun point n'y a été investi.
+          </p>
+
+          <h3>Le test de compétence</h3>
+          <p class="alinea">Un test de compétence se résout comme un test de caractéristique, auquel s'ajoute le bonus de la compétence :</p>
+          <p class="exemple"><span class="gras">Test de compétence = 1d20 + bonus de compétence + caractéristique</span>, comparé à la difficulté.</p>
+          <p class="alinea">
+            Le jet passe par la fenêtre de jet habituelle du système : dé bonus ou dé malus (caractéristique supérieure, état affaibli…), seuil de critique, difficulté et points de
+            chance fonctionnent comme pour un test de caractéristique. Voir @UUID[Compendium.cof2-options.guide.JournalEntry.cwOU2QizqgCmB57H.JournalEntryPage.aJ0nQq1LyiPCMM4m]{Sur la fiche de personnage} pour le détail.
+          </p>
+
+          <h3>Liste des compétences</h3>
+          <table class="tableau">
+            <tbody>
+              <tr class="tableau-titre">
+                <td colspan="2">Les 22 compétences</td>
+              </tr>
+              <tr class="tableau-entete">
+                <td>Compétence</td>
+                <td>Caractéristique(s)</td>
+              </tr>
+              <tr><td>Acrobaties</td><td>AGI</td></tr>
+              <tr><td>Artisanat</td><td>INT</td></tr>
+              <tr><td>Athlétisme</td><td>AGI, FOR ou CON</td></tr>
+              <tr><td>Commerce</td><td>CHA</td></tr>
+              <tr><td>Connaissances</td><td>INT</td></tr>
+              <tr><td>Discrétion</td><td>AGI</td></tr>
+              <tr><td>Divertissement</td><td>CHA</td></tr>
+              <tr><td>Effraction</td><td>AGI</td></tr>
+              <tr><td>Empathie</td><td>PER</td></tr>
+              <tr><td>Équitation</td><td>AGI ou CHA</td></tr>
+              <tr><td>Escalade</td><td>AGI</td></tr>
+              <tr><td>Intimidation</td><td>CHA</td></tr>
+              <tr><td>Médecine</td><td>PER</td></tr>
+              <tr><td>Natation</td><td>CON</td></tr>
+              <tr><td>Occultisme</td><td>INT</td></tr>
+              <tr><td>Persuasion</td><td>CHA</td></tr>
+              <tr><td>Religion</td><td>INT</td></tr>
+              <tr><td>Renseignement</td><td>CHA</td></tr>
+              <tr><td>Sciences</td><td>INT</td></tr>
+              <tr><td>Survie</td><td>PER</td></tr>
+              <tr><td>Tromperie</td><td>CHA</td></tr>
+              <tr><td>Vigilance</td><td>PER</td></tr>
+            </tbody>
+          </table>
+          <p class="alinea">
+            Quand une compétence est liée à plusieurs caractéristiques, c'est le joueur qui choisit celle du test, selon l'action entreprise : courir et sauter (AGI ou FOR), soulever un
+            objet lourd (FOR) ou marcher longtemps (CON) pour l'Athlétisme ; monter à cheval (AGI) ou calmer une monture (CHA) pour l'Équitation. La description complète de chaque
+            compétence se trouve dans l'Atlas d'Osgild (p.223-224).
+          </p>
+
+          <h3>Compétences et armure</h3>
+          <p class="alinea">
+            Le malus d'armure s'applique automatiquement à <span class="gras">tous les tests de compétence basés sur l'AGI ou la CON</span>. Il est reporté dans le champ Malus de la
+            fenêtre de jet.
+          </p>
+          <p class="exemple">
+            Un personnage en armure qui tente un test d'Athlétisme choisit entre un test de FOR sans malus d'armure et un test d'AGI avec ce malus.
+          </p>
+
+          <h3>Valeur maximale</h3>
+          <p class="alinea">
+            Le bonus d'une compétence ne peut pas dépasser <span class="gras">niveau du personnage + 5</span>, et jamais plus de <span class="gras">+15</span>. Le bouton d'augmentation
+            de l'onglet Compétences se désactive une fois ce plafond atteint.
+          </p>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 200000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!cwOU2QizqgCmB57H.CCwqekLQvFbTu1Fk'
+  - _id: Lsf0qafANNj8ONRu
+    name: La maîtrise
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="journal-page-cof-base">
+          <h2>La maîtrise</h2>
+          <p class="lettrine">
+            Un personnage <span class="gras">maîtrise</span> certaines compétences, selon son profil, ses voies et son peuple. La maîtrise rend une compétence moins chère à développer :
+            augmenter son bonus de +1 coûte <span class="gras">1 point de compétence</span> si elle est maîtrisée, et <span class="gras">2 points</span> sinon. Le module calcule la
+            maîtrise automatiquement ; sur la fiche, une compétence maîtrisée apparaît en gras, suivie de l'icône <i class="fa-solid fa-shield-halved"></i>.
+          </p>
+
+          <h3>Profil principal</h3>
+          <p class="alinea">Un personnage maîtrise toutes les compétences de son profil principal (Atlas d'Osgild p.224-225).</p>
+          <table class="tableau">
+            <tbody>
+              <tr class="tableau-titre">
+                <td colspan="2">Compétences maîtrisées par profil</td>
+              </tr>
+              <tr class="tableau-entete">
+                <td>Profil</td>
+                <td>Compétences</td>
+              </tr>
+              <tr><td>Barbare</td><td>artisanat, athlétisme, équitation, escalade, intimidation, natation, survie, vigilance</td></tr>
+              <tr><td>Chevalier</td><td>athlétisme, connaissances, équitation, intimidation, natation, persuasion, religion</td></tr>
+              <tr><td>Guerrier</td><td>artisanat, athlétisme, équitation, intimidation, natation</td></tr>
+              <tr><td>Arquebusier</td><td>artisanat, athlétisme, équitation, intimidation, natation, sciences, vigilance</td></tr>
+              <tr>
+                <td>Barde</td>
+                <td>
+                  acrobaties, artisanat, athlétisme, commerce, connaissances, divertissement, empathie, équitation, intimidation, natation, persuasion, religion, renseignement,
+                  tromperie
+                </td>
+              </tr>
+              <tr>
+                <td>Voleur</td>
+                <td>acrobaties, artisanat, athlétisme, commerce, discrétion, escalade, effraction, intimidation, natation, persuasion, renseignement, tromperie, vigilance</td>
+              </tr>
+              <tr><td>Rôdeur</td><td>acrobaties, artisanat, athlétisme, discrétion, équitation, escalade, médecine, natation, survie, vigilance</td></tr>
+              <tr><td>Ensorceleur, Forgesort, Magicien, Sorcier</td><td>artisanat, connaissances, occultisme, sciences</td></tr>
+              <tr>
+                <td>Druide</td>
+                <td>artisanat, athlétisme, connaissances, discrétion, équitation, empathie, médecine, natation, religion, survie, vigilance</td>
+              </tr>
+              <tr>
+                <td>Moine</td>
+                <td>acrobaties, artisanat, athlétisme, connaissances, discrétion, empathie, escalade, médecine, natation, religion, survie, vigilance</td>
+              </tr>
+              <tr>
+                <td>Prêtre</td>
+                <td>artisanat, athlétisme, connaissances, empathie, équitation, intimidation, médecine, persuasion, religion, survie</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Profil hybride</h3>
+          <p class="alinea">
+            Chaque fois qu'un personnage ouvre une <span class="gras">voie issue d'un autre profil</span> que son profil principal, une fenêtre lui demande de choisir
+            <span class="gras">2 compétences</span> de ce profil, parmi celles qu'il ne maîtrise pas encore. S'il n'en reste qu'une, il n'en choisit qu'une ; s'il les maîtrise déjà
+            toutes, aucune fenêtre ne s'ouvre.
+          </p>
+          <p class="exemple">
+            Lhagva la barbare ouvre la voie du chevalier. Elle maîtrise déjà athlétisme, équitation, intimidation et natation : la fenêtre lui propose connaissances, persuasion et
+            religion, parmi lesquelles elle en choisit deux.
+          </p>
+          <p class="alinea">
+            Si le personnage avait déjà investi des points dans une compétence qu'il vient de maîtriser, <span class="gras">son bonus est doublé</span> (Atlas d'Osgild p.225).
+          </p>
+          <p class="exemple">Au niveau 6, Lhagva a +2 en acrobaties (4 points investis) quand elle ouvre une voie de voleur et choisit acrobaties : son bonus passe à +4.</p>
+          <p class="alinea">
+            Les quatre profils de mage partagent la même liste : un magicien qui ouvre une voie d'ensorceleur maîtrise déjà ces compétences et ne choisit rien. Si la fenêtre est fermée
+            sans valider, la voie n'accorde aucune maîtrise.
+          </p>
+
+          <h3>Compétences de peuple</h3>
+          <p class="alinea">
+            Au lieu de son bonus habituel de +3, la <span class="gras">capacité de rang 1 de la voie de peuple</span> donne la maîtrise de deux compétences, sans point de bonus (Atlas
+            d'Osgild p.225). La maîtrise est accordée dès que cette capacité est apprise.
+          </p>
+          <table class="tableau">
+            <tbody>
+              <tr class="tableau-titre">
+                <td colspan="3">Compétences de peuple</td>
+              </tr>
+              <tr class="tableau-entete">
+                <td>Voie de peuple</td>
+                <td>Capacité de rang 1</td>
+                <td>Compétences maîtrisées</td>
+              </tr>
+              <tr><td>Voie du demi-orc</td><td>Impressionnant</td><td>athlétisme, intimidation</td></tr>
+              <tr><td>Voie de l'elfe haut</td><td>Lumière intérieure</td><td>connaissances, divertissement</td></tr>
+              <tr><td>Voie de l'elfe sylvain</td><td>Lumière des étoiles</td><td>discrétion, survie</td></tr>
+              <tr><td>Voie du gnome</td><td>Don étrange</td><td>sciences, occultisme</td></tr>
+              <tr><td>Voie de l'halfelin</td><td>Petite taille</td><td>discrétion, effraction</td></tr>
+              <tr><td>Voie de l'humain</td><td>Diversité</td><td>artisanat et une compétence au choix</td></tr>
+              <tr><td>Voie du nain</td><td>Habitant des tunnels</td><td>artisanat, vigilance</td></tr>
+            </tbody>
+          </table>
+          <ul>
+            <li class="puce-noire">
+              <p>
+                <span class="gras">Humain</span> : une fenêtre propose de choisir la seconde compétence parmi toutes les autres. Si elle est fermée sans valider, elle sera proposée de
+                nouveau à la prochaine modification de la voie.
+              </p>
+            </li>
+            <li class="puce-noire">
+              <p>
+                <span class="gras">Demi-elfe</span> : le livre ne le cite pas. Le demi-elfe suivant la voie de peuple de l'un de ses parents, il reçoit les compétences de cette voie
+                (elfe haut, elfe sylvain ou humain).
+              </p>
+            </li>
+            <li class="puce-noire">
+              <p>
+                <span class="gras">Voie du mage</span> : elle n'accorde pas de compétences de peuple. Le mage qui l'a choisie conserve la capacité de rang 1 de sa voie de peuple, et donc
+                la maîtrise qui va avec.
+              </p>
+            </li>
+          </ul>
+
+          <h4>Double maîtrise</h4>
+          <p class="alinea">
+            Si une compétence de peuple est déjà maîtrisée grâce au profil (principal ou hybride), le personnage reçoit à la place
+            <span class="gras">2 points de compétence supplémentaires investis dans cette compétence</span>, soit +2. Ces +2 ne sont pas pris sur les points de compétence du niveau et
+            ne peuvent pas être retirés avec le bouton <i class="fa-solid fa-minus"></i>.
+          </p>
+          <p class="exemple">
+            Au niveau 1, Lhagva la barbare humaine choisit athlétisme comme compétence de peuple, qu'elle maîtrise déjà et dans laquelle elle a investi 1 point : elle passe à +3. Elle
+            obtient aussi +2 en artisanat, déjà maîtrisé par son profil.
+          </p>
+
+          <h4>Le bonus de +3 disparaît</h4>
+          <p class="alinea">
+            Quand le système de compétences est actif, les bonus de +3 aux tests de caractéristique accordés par la capacité de rang 1 de ces voies (par exemple +3 en INT et en CHA pour
+            Lumière intérieure) <span class="gras">ne sont plus proposés dans la fenêtre de jet</span>, ni pour les tests de caractéristique ni pour les tests de compétence. Les autres
+            effets de ces capacités sont conservés : vision dans le noir, bonus de DEF de l'halfelin…
+          </p>
+
+          <h3>Retrait d'une voie</h3>
+          <p class="alinea">
+            Si une voie hors profil ou la voie de peuple est retirée de la fiche, la maîtrise qu'elle accordait disparaît. Les bonus déjà investis sont conservés tels quels ; seul le
+            coût des prochains points repasse à 2.
+          </p>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 300000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!cwOU2QizqgCmB57H.Lsf0qafANNj8ONRu'
+  - _id: aJ0nQq1LyiPCMM4m
+    name: Sur la fiche de personnage
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="journal-page-cof-base">
+          <h2>Sur la fiche de personnage</h2>
+          <h3>L'onglet Compétences</h3>
+          <p class="lettrine">
+            Quand le système de compétences est actif, la fiche de Personnage comporte un onglet <span class="gras">Compétences</span>, placé juste avant l'onglet Voies &amp;
+            Capacités. Il liste les 22 compétences, une par ligne.
+          </p>
+          <ul>
+            <li class="puce-noire"><p><span class="gras">Le nom de la compétence</span>, en gras si elle est maîtrisée. Un clic lance le test.</p></li>
+            <li class="puce-noire">
+              <p>
+                <span class="gras">La ou les caractéristiques</span> associées (AGI, FOR…). Un clic sur l'une d'elles lance le test avec cette caractéristique.
+              </p>
+            </li>
+            <li class="puce-noire"><p>L'icône <i class="fa-solid fa-shield-halved"></i> pour une compétence maîtrisée.</p></li>
+            <li class="puce-noire"><p>Le <span class="gras">bonus</span> de la compétence.</p></li>
+          </ul>
+          <p class="alinea">
+            En <span class="gras">mode Édition</span> (fiche déverrouillée), l'onglet affiche en plus les boutons <i class="fa-solid fa-minus"></i> et <i class="fa-solid fa-plus"></i>
+            de part et d'autre du bonus, et, en haut de l'onglet, le compteur <i class="fa-solid fa-star"></i> des points de compétence <span class="gras">disponibles / total</span>.
+            Fiche verrouillée, les bonus ne peuvent pas être modifiés.
+          </p>
+
+          <h3>Points de compétence</h3>
+          <p class="alinea">
+            Les points se dépensent fiche déverrouillée. Le personnage reçoit <span class="gras">3 points de compétence par niveau</span>, niveau 1 compris : le total vaut donc 3 × niveau et augmente automatiquement au passage de
+            niveau.
+          </p>
+          <ul>
+            <li class="puce-noire">
+              <p>
+                <i class="fa-solid fa-plus"></i> augmente le bonus de +1 et dépense 1 point si la compétence est maîtrisée, 2 points sinon. Le bouton est grisé s'il ne reste pas
+                assez de points ou si le bonus a atteint le plafond (niveau + 5, +15 au maximum).
+              </p>
+            </li>
+            <li class="puce-noire">
+              <p>
+                <i class="fa-solid fa-minus"></i> diminue le bonus de 1 et rend le coût actuel de la compétence (1 ou 2 points). Les +2 obtenus par double maîtrise de peuple ne peuvent
+                pas être retirés.
+              </p>
+            </li>
+          </ul>
+          <p class="exemple">
+            Au niveau 1, Ionas, ensorceleur elfe haut, veut développer la survie, qu'il ne maîtrise pas : +1 lui coûte 2 points. Il investit son dernier point en occultisme, qu'il
+            maîtrise, pour +1.
+          </p>
+          <p class="alinea">
+            Les points non dépensés restent disponibles aux niveaux suivants, et le bouton <i class="fa-solid fa-minus"></i> permet de les répartir autrement à tout moment. Le livre
+            demande au contraire de dépenser les points dès leur obtention : c'est au MJ de faire respecter cette règle s'il le souhaite.
+          </p>
+
+          <h3>Lancer un test de compétence</h3>
+          <p class="alinea">
+            Un clic sur le nom de la compétence lance le test avec sa première caractéristique ; un clic sur l'abréviation d'une caractéristique lance le test avec celle-ci (par exemple
+            FOR ou CON pour l'Athlétisme). La fenêtre de jet du système s'ouvre :
+          </p>
+          <ul>
+            <li class="puce-noire"><p>le champ <span class="gras">Bonus</span> est prérempli avec le bonus de la compétence ;</p></li>
+            <li class="puce-noire"><p>le champ <span class="gras">Malus</span> contient le malus d'armure pour un test d'AGI ou de CON ;</p></li>
+            <li class="puce-noire">
+              <p>
+                les <span class="gras">bonus permanents des capacités</span> du personnage ne sont pas proposés : ils ne servent que pour les tests de caractéristique (Atlas d'Osgild
+                p.226). Les capacités activables (sorts, postures…) et les effets reçus d'autres personnages restent proposés ;
+              </p>
+            </li>
+            <li class="puce-noire"><p>dé bonus, dé malus, difficulté et points de chance fonctionnent comme pour un test de caractéristique.</p></li>
+          </ul>
+          <p class="alinea">
+            La fenêtre est titrée avec la compétence et la caractéristique utilisée, par exemple <span class="gras">« Test d'Acrobaties (AGI) »</span>, et le message de résultat du
+            tchat indique <span class="gras">« Acrobaties (AGI) »</span>.
+          </p>
+
+          <h3>Tests de caractéristique</h3>
+          <p class="alinea">
+            Les tests de caractéristique se lancent toujours depuis l'en-tête de la fiche, sans bonus de compétence. Les bonus de capacité y restent proposés, à l'exception du +3 de la
+            capacité de rang 1 des voies de peuple (voir @UUID[Compendium.cof2-options.guide.JournalEntry.cwOU2QizqgCmB57H.JournalEntryPage.Lsf0qafANNj8ONRu]{La maîtrise}).
+          </p>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 400000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!cwOU2QizqgCmB57H.aJ0nQq1LyiPCMM4m'
+  - _id: HaqlOwpAEmpo3tX8
+    name: Limites et écarts
+    type: text
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: |-
+        <div class="journal-page-cof-base">
+          <h2>Limites et écarts</h2>
+          <p class="lettrine">
+            Le module automatise le cœur du système de compétences de l'Atlas d'Osgild. Quelques règles secondaires du même chapitre ne sont pas implémentées, et quelques points
+            s'écartent du livre. Le MJ peut les appliquer à la main.
+          </p>
+
+          <h3>Règles non implémentées</h3>
+          <h4>Capacités et compétences</h4>
+          <p class="alinea">
+            Le livre permet de renoncer au bonus d'une capacité (bonus égal à rang + 2 sur un test de caractéristique) pour gagner 4 points de compétence, ou 5 pour une capacité de voie
+            de prestige. Le module ne propose pas cet échange : les capacités gardent leur bonus, qui reste réservé aux tests de caractéristique.
+          </p>
+          <h4>Progression par PEX</h4>
+          <p class="alinea">
+            La variante qui associe les compétences à la progression par PEX (« Cumul des systèmes PEX et compétences ») n'est pas implémentée, y compris son nombre de compétences
+            hybrides variable selon le profil (de 1 à 3). Le module applique la règle de base : 2 compétences par voie hybride.
+          </p>
+          <h4>Note du gnome</h4>
+          <p class="alinea">
+            « Au rang 2 de la voie du gnome, le bonus de +3 s'applique également à la compétence persuasion » : cette note n'est pas reprise.
+          </p>
+
+          <h3>Écarts avec le livre</h3>
+          <ul>
+            <li class="puce-noire">
+              <p>
+                <span class="gras">Points non dépensés</span> : ils sont conservés d'un niveau sur l'autre et peuvent être redistribués à tout moment avec
+                <i class="fa-solid fa-minus"></i>, alors que le livre impose de les dépenser immédiatement.
+              </p>
+            </li>
+            <li class="puce-noire">
+              <p>
+                <span class="gras">Doublement du bonus</span> : il n'est appliqué que pour une maîtrise obtenue par une voie hybride. Il ne l'est pas quand la maîtrise vient de la voie de
+                peuple, si des points ont été investis dans la compétence avant d'apprendre la capacité de rang 1. Le bonus doublé n'est pas ramené au plafond niveau + 5.
+              </p>
+            </li>
+            <li class="puce-noire">
+              <p>
+                <span class="gras">Retrait d'une voie</span> : les points investis dans une compétence qui n'est plus maîtrisée ne sont pas remboursés.
+              </p>
+            </li>
+          </ul>
+
+          <h3>Hors du périmètre</h3>
+          <ul>
+            <li class="puce-noire"><p>La mini-fiche de personnage n'affiche pas les compétences.</p></li>
+            <li class="puce-noire"><p>Les Rencontres (PNJ et créatures) n'ont pas de compétences.</p></li>
+            <li class="puce-noire">
+              <p>
+                Les profils et voies de peuple créés à la main, dont l'identifiant ne correspond pas à ceux du Livre des règles (<span class="italique">cof2-base</span>), n'accordent
+                aucune maîtrise.
+              </p>
+            </li>
+          </ul>
+        </div>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    sort: 500000
+    ownership:
+      default: -1
+    flags: {}
+    _key: '!journal.pages!cwOU2QizqgCmB57H.HaqlOwpAEmpo3tX8'
+folder: null
+sort: 0
+ownership:
+  default: 0
+flags:
+  cof2-base:
+    isJournalCOF: true
+_key: '!journal!cwOU2QizqgCmB57H'

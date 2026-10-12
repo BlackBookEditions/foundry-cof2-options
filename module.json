@@ -35,5 +35,18 @@
       "path": "lang/fr.json"
     }
   ],
+  "packs": [
+    {
+      "label": "COF2 Options - Guide du module",
+      "type": "JournalEntry",
+      "name": "guide",
+      "path": "packs/guide",
+      "system": "co2",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
   "socket": false
 }

@@ -14,12 +14,19 @@ Depuis l'accueil, dans l'onglet Modules :
 
 ## Fonctionnalités
 
+### Guide du module
+
+Le compendium **« COF2 Options - Guide du module »** décrit les règles implémentées et leur utilisation dans Foundry. Il prend la mise en page des journaux du Livre des règles quand le module `cof2-base` est actif.
+
+Les pages sont écrites en HTML dans `guide/html/`. Après modification : `npm run guide` (génère `src/packs/guide`), puis `npm run YMLtoLDB` Foundry fermé (la CI compile les packs à chaque release).
+
 ### Système de compétences (Atlas d'Osgild)
 
 Règle optionnelle qui ajoute aux tests de caractéristique de CO2 22 compétences nommées (chacune liée à une ou plusieurs caractéristiques), avec maîtrise, points de compétence par niveau et plafond de valeur. Test de compétence : `1d20 + bonus de compétence + caractéristique`.
 
 Activation : réglage monde **« Système de compétences (Atlas d'Osgild) »** (nécessite un rechargement). Une fois actif :
 - Un onglet **Compétences** apparaît sur la fiche de personnage, juste avant « Voies & Capacités ». Les tests de caractéristique de l'en-tête restent disponibles.
+- Les boutons « + » / « − » et le compteur de points (disponibles / total) n'apparaissent qu'en mode Édition (fiche déverrouillée).
 - Cliquer sur le nom d'une compétence lance le test avec sa première caractéristique ; cliquer sur l'abréviation d'une caractéristique (ex. `AGI / FOR / CON` pour Athlétisme, `AGI / CHA` pour Équitation) lance le test avec celle-ci.
 - La **maîtrise** est calculée automatiquement : toutes les compétences du profil principal, plus 2 compétences au choix dans la liste d'un autre profil à chaque fois qu'une voie issue de ce profil est ouverte (personnage hybride), plus 2 compétences liées au peuple dès que la capacité de rang 1 de sa voie de peuple est apprise (Humain : Artisanat + 1 compétence au choix ; un demi-elfe reçoit celles de la voie de peuple qu'il suit).
 - Si une compétence de peuple est déjà maîtrisée par ailleurs (profil ou hybride), le personnage reçoit à la place 2 points de compétence supplémentaires investis dans cette compétence (+2, non récupérables avec le bouton « − »).

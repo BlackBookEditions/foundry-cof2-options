@@ -8,6 +8,7 @@ import {
   getSkillCap,
   wireSkillsTab,
   installPeopleBonusFilter,
+  installSkillCheckTitle,
   onCreatePath,
   onUpdatePath,
   onDeletePath,
@@ -39,6 +40,8 @@ Hooks.once("init", () => {
 
     // Le +3 de la capacité de rang 1 des voies de peuple est remplacé par la maîtrise (Atlas p.225)
     installPeopleBonusFilter()
+    // Titre « Test d'Acrobaties (AGI) » pour la fenêtre de jet d'un test de compétence
+    installSkillCheckTitle()
   }
 
   Handlebars.registerHelper("cof2OptionsSkills", (actor) => getSkillsViewModel(actor))

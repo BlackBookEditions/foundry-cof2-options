@@ -1,0 +1,78 @@
+<div class="journal-page-cof-base">
+  <h2>Sur la fiche de personnage</h2>
+  <h3>L'onglet Compétences</h3>
+  <p class="lettrine">
+    Quand le système de compétences est actif, la fiche de Personnage comporte un onglet <span class="gras">Compétences</span>, placé juste avant l'onglet Voies &amp;
+    Capacités. Il liste les 22 compétences, une par ligne.
+  </p>
+  <ul>
+    <li class="puce-noire"><p><span class="gras">Le nom de la compétence</span>, en gras si elle est maîtrisée. Un clic lance le test.</p></li>
+    <li class="puce-noire">
+      <p>
+        <span class="gras">La ou les caractéristiques</span> associées (AGI, FOR…). Un clic sur l'une d'elles lance le test avec cette caractéristique.
+      </p>
+    </li>
+    <li class="puce-noire"><p>L'icône <i class="fa-solid fa-shield-halved"></i> pour une compétence maîtrisée.</p></li>
+    <li class="puce-noire"><p>Le <span class="gras">bonus</span> de la compétence.</p></li>
+  </ul>
+  <p class="alinea">
+    En <span class="gras">mode Édition</span> (fiche déverrouillée), l'onglet affiche en plus les boutons <i class="fa-solid fa-minus"></i> et <i class="fa-solid fa-plus"></i>
+    de part et d'autre du bonus, et, en haut de l'onglet, le compteur <i class="fa-solid fa-star"></i> des points de compétence <span class="gras">disponibles / total</span>.
+    Fiche verrouillée, les bonus ne peuvent pas être modifiés.
+  </p>
+
+  <h3>Points de compétence</h3>
+  <p class="alinea">
+    Les points se dépensent fiche déverrouillée. Le personnage reçoit <span class="gras">3 points de compétence par niveau</span>, niveau 1 compris : le total vaut donc 3 × niveau et augmente automatiquement au passage de
+    niveau.
+  </p>
+  <ul>
+    <li class="puce-noire">
+      <p>
+        <i class="fa-solid fa-plus"></i> augmente le bonus de +1 et dépense 1 point si la compétence est maîtrisée, 2 points sinon. Le bouton est grisé s'il ne reste pas
+        assez de points ou si le bonus a atteint le plafond (niveau + 5, +15 au maximum).
+      </p>
+    </li>
+    <li class="puce-noire">
+      <p>
+        <i class="fa-solid fa-minus"></i> diminue le bonus de 1 et rend le coût actuel de la compétence (1 ou 2 points). Les +2 obtenus par double maîtrise de peuple ne peuvent
+        pas être retirés.
+      </p>
+    </li>
+  </ul>
+  <p class="exemple">
+    Au niveau 1, Ionas, ensorceleur elfe haut, veut développer la survie, qu'il ne maîtrise pas : +1 lui coûte 2 points. Il investit son dernier point en occultisme, qu'il
+    maîtrise, pour +1.
+  </p>
+  <p class="alinea">
+    Les points non dépensés restent disponibles aux niveaux suivants, et le bouton <i class="fa-solid fa-minus"></i> permet de les répartir autrement à tout moment. Le livre
+    demande au contraire de dépenser les points dès leur obtention : c'est au MJ de faire respecter cette règle s'il le souhaite.
+  </p>
+
+  <h3>Lancer un test de compétence</h3>
+  <p class="alinea">
+    Un clic sur le nom de la compétence lance le test avec sa première caractéristique ; un clic sur l'abréviation d'une caractéristique lance le test avec celle-ci (par exemple
+    FOR ou CON pour l'Athlétisme). La fenêtre de jet du système s'ouvre :
+  </p>
+  <ul>
+    <li class="puce-noire"><p>le champ <span class="gras">Bonus</span> est prérempli avec le bonus de la compétence ;</p></li>
+    <li class="puce-noire"><p>le champ <span class="gras">Malus</span> contient le malus d'armure pour un test d'AGI ou de CON ;</p></li>
+    <li class="puce-noire">
+      <p>
+        les <span class="gras">bonus permanents des capacités</span> du personnage ne sont pas proposés : ils ne servent que pour les tests de caractéristique (Atlas d'Osgild
+        p.226). Les capacités activables (sorts, postures…) et les effets reçus d'autres personnages restent proposés ;
+      </p>
+    </li>
+    <li class="puce-noire"><p>dé bonus, dé malus, difficulté et points de chance fonctionnent comme pour un test de caractéristique.</p></li>
+  </ul>
+  <p class="alinea">
+    La fenêtre est titrée avec la compétence et la caractéristique utilisée, par exemple <span class="gras">« Test d'Acrobaties (AGI) »</span>, et le message de résultat du
+    tchat indique <span class="gras">« Acrobaties (AGI) »</span>.
+  </p>
+
+  <h3>Tests de caractéristique</h3>
+  <p class="alinea">
+    Les tests de caractéristique se lancent toujours depuis l'en-tête de la fiche, sans bonus de compétence. Les bonus de capacité y restent proposés, à l'exception du +3 de la
+    capacité de rang 1 des voies de peuple (voir @@page:maitrise@@).
+  </p>
+</div>

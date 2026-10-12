@@ -136,18 +136,23 @@ export function getSkillsViewModel(actor) {
 
 // #region Jet de compétence
 
-/** Vrai pendant la partie synchrone de `rollSkillCheck` : `skillModifiers` masque alors les bonus de capacité. */
-let skillCheckInProgress = false
+/**
+ * Test de compétence en cours de lancement (`{ title }`), ou null. Renseigné seulement pendant la partie
+ * synchrone de `rollSkillCheck` : `rollSkill` lit les bonus (`getSkillBonuses`) puis appelle
+ * `COSkillRoll.prompt` avant son premier `await`, la valeur ne déborde donc jamais sur un autre jet.
+ */
+let currentSkillCheck = null
+
+const VOWELS = "aeiouyàâéèêëïîôùûüAEIOUYÀÂÉÈÊËÏÎÔÙÛÜ"
 
 /**
  * Lance un test de compétence : `1d20 + bonus de compétence + caractéristique`, via le moteur de
  * jet de co2 (`Actor#rollSkill`), qui gère dés bonus/malus, seuil critique et carte de chat.
- * Le titre de la fenêtre de jet reste basé sur la caractéristique (co2 ne l'expose pas autrement) ;
- * le nom de la compétence apparaît via `chatFlavor` dans le message de résultat.
+ * La fenêtre de jet est titrée « Test d'Acrobaties (AGI) » (cf. `installSkillCheckTitle`) et le message
+ * de chat porte « Acrobaties (AGI) » via `chatFlavor`.
  *
  * Les bonus permanents des capacités ne s'appliquent qu'aux tests de caractéristique (p.226) : ils sont
- * masqués de la fenêtre de jet. `rollSkill` lit les bonus (`getSkillBonuses`) avant son premier `await`,
- * le drapeau n'est donc levé que le temps de l'appel synchrone et ne déborde pas sur un autre jet.
+ * masqués de la fenêtre de jet (cf. `installPeopleBonusFilter`).
  */
 export async function rollSkillCheck(actor, skillId, abilityId) {
   const def = SKILLS[skillId]
@@ -157,12 +162,29 @@ export async function rollSkillCheck(actor, skillId, abilityId) {
   // Le malus d'armure AGI est déjà géré par co2 pour skillId === "agi" (systems/co2/module/documents/actor.mjs).
   // La règle Atlas l'étend au CON (p.227), que co2 ne couvre pas nativement : on le complète ici.
   const malus = ability === "con" ? actor.malusFromArmor : 0
-  const chatFlavor = game.i18n.localize(`COF2OPTIONS.skills.${skillId}`)
-  skillCheckInProgress = true
+  const skillName = game.i18n.localize(`COF2OPTIONS.skills.${skillId}`)
+  const chatFlavor = `${skillName} (${game.i18n.localize(`CO.abilities.short.${ability}`)})`
+  const preposition = VOWELS.includes(skillName.charAt(0)) ? "d'" : "de "
+  currentSkillCheck = { title: `Test ${preposition}${chatFlavor}` }
   try {
     return actor.rollSkill(ability, { bonus, malus, chatFlavor })
   } finally {
-    skillCheckInProgress = false
+    currentSkillCheck = null
+  }
+}
+
+/**
+ * Remplace le titre de la fenêtre de jet de co2 (« Test d'AGIlité », calculé dans `rollSkill` à partir de
+ * la caractéristique) par celui de la compétence pendant un test lancé depuis l'onglet Compétences.
+ * À appeler au hook `init`, réglage actif.
+ */
+export function installSkillCheckTitle() {
+  const COSkillRoll = game.system.api?.documents?.COSkillRoll
+  if (!COSkillRoll) return
+  const original = COSkillRoll.prompt
+  COSkillRoll.prompt = function (dialogContext, options) {
+    if (currentSkillCheck) dialogContext.title = currentSkillCheck.title
+    return original.call(this, dialogContext, options)
   }
 }
 
@@ -173,6 +195,7 @@ export async function rollSkillCheck(actor, skillId, abilityId) {
 /**
  * Hook `renderCOCharacterSheet` : câble les interactions de l'onglet Compétences (jet, +/-). Les tests
  * de caractéristique de l'en-tête restent disponibles : l'Atlas les conserve (p.226-227).
+ * Les boutons +/- et le compteur de points ne sont rendus qu'en mode Édition (`unlocked` du contexte co2).
  */
 export function wireSkillsTab(application, element) {
   if (!isSkillSystemEnabled()) return
@@ -191,13 +214,13 @@ export function wireSkillsTab(application, element) {
   tab.querySelectorAll('[data-action="cof2OptionsIncreaseSkill"]').forEach((el) => {
     el.addEventListener("click", (event) => {
       event.preventDefault()
-      if (!el.classList.contains("disabled")) increaseSkill(actor, el.dataset.skillId)
+      if (application.isEditMode && !el.classList.contains("disabled")) increaseSkill(actor, el.dataset.skillId)
     })
   })
   tab.querySelectorAll('[data-action="cof2OptionsDecreaseSkill"]').forEach((el) => {
     el.addEventListener("click", (event) => {
       event.preventDefault()
-      if (!el.classList.contains("disabled")) decreaseSkill(actor, el.dataset.skillId)
+      if (application.isEditMode && !el.classList.contains("disabled")) decreaseSkill(actor, el.dataset.skillId)
     })
   })
 }
@@ -476,7 +499,7 @@ export function installPeopleBonusFilter() {
   Object.defineProperty(CharacterData.prototype, "skillModifiers", {
     configurable: true,
     get() {
-      return original.call(this).filter((m) => !isReplacedPeopleBonus(this.parent, m) && !(skillCheckInProgress && isCapacityTestBonus(this.parent, m)))
+      return original.call(this).filter((m) => !isReplacedPeopleBonus(this.parent, m) && !(currentSkillCheck && isCapacityTestBonus(this.parent, m)))
     },
   })
 }

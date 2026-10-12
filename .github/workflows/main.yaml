@@ -100,6 +100,14 @@ jobs:
           MANIFEST: ${{ env.latest_manifest_url }}
           DOWNLOAD: ${{ env.release_module_url }}
 
+      # Install the dependencies needed to compile the packs.
+      - name: Install Dependencies
+        run: npm ci
+
+      # Compile the YAML sources of the packs to LevelDB.
+      - name: Compile Packs
+        run: npm run YMLtoLDB
+
       # Create a "module.zip" archive containing all the module's required files.
       # If you have other directories or files that will need to be added to
       # your packaged module, add them here.
@@ -119,7 +127,8 @@ jobs:
             CHANGELOG.md                         \
             lang/                                \
             templates/                           \
-            module/
+            module/                              \
+            packs/
           # Don't forget to add a backslash at the end of the line for any additional files or directories!
 
       # Update the GitHub release with the manifest and module archive files.
