@@ -1,3 +1,7 @@
+## 0.9.0
+- Capacités et compétences (Atlas p.226) : en mode Édition, l'onglet Compétences liste les capacités qui donnent rang + 2 à un test de caractéristique ; en cocher une renonce à son bonus et ajoute 4 points de compétence au total (5 pour une voie de prestige).
+- Le compteur de points de compétence affiche le total réel, points des capacités échangées compris.
+
 ## 0.8.0
 - Initialisation du module.
 - Ajout du système de compétences optionnel de l'Atlas d'Osgild (réglage, onglet Compétences, maîtrise automatique par profil/voie, points de compétence, jets).

@@ -11,7 +11,12 @@
         "skills": "Compétences"
       },
       "mastered": "Compétence maîtrisée",
-      "pointsTooltip": "Points de compétence disponibles / pool du niveau"
+      "pointsTooltip": "Points de compétence disponibles / total",
+      "trades": {
+        "title": "Capacités et compétences",
+        "hint": "Cochez une capacité pour renoncer à son bonus (rang + 2) et gagner des points de compétence, à investir dans les compétences du profil dont elle est issue. Une capacité ne peut être décochée que si ses points n'ont pas été dépensés.",
+        "points": "+{points} points"
+      }
     },
     "skills": {
       "acrobaties": "Acrobaties",

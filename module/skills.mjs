@@ -57,10 +57,10 @@ export function getSkillCap(actor) {
   return Math.min(level + 5, 15)
 }
 
-/** Pool de points de compétence : 3 par niveau (niveau 1 inclus, p.225). */
+/** Pool de points de compétence : 3 par niveau (niveau 1 inclus, p.225), plus les points des capacités échangées (p.226). */
 export function getSkillPool(actor) {
   const level = actor.system?.attributes?.level ?? 1
-  return 3 * level
+  return 3 * level + getTradePointsTotal(actor)
 }
 
 export function getSkillPointsSpent(actor) {
@@ -128,6 +128,91 @@ export function getSkillsViewModel(actor) {
       bonus,
       canIncrease: bonus < cap && available >= cost,
       canDecrease: bonus > getSkillFreeBonus(actor, id),
+    }
+  })
+}
+
+// #endregion
+
+// #region Capacités et compétences (p.226)
+
+/** Points de compétence gagnés en renonçant au bonus d'une capacité : 4, ou 5 pour une voie de prestige. */
+const TRADE_POINTS = 4
+const TRADE_POINTS_PRESTIGE = 5
+
+/** Formule du bonus « rang + 2 » telle que saisie dans les capacités de cof2-base (`2 + @rang`, `@rang + 2`). */
+const RANK_BONUS_FORMULA = /^(2\+@rang|@rang\+2)$/
+
+function isRankBonusModifier(modifier) {
+  return modifier.subtype === "skill" && RANK_BONUS_FORMULA.test(String(modifier.value ?? "").replace(/\s/g, ""))
+}
+
+/** @returns {Item|null} La voie de l'acteur à laquelle appartient la capacité. */
+function getCapacityPath(actor, capacity) {
+  return actor.items.get(foundry.utils.parseUuid(capacity.system.path ?? "")?.id) ?? null
+}
+
+function getTradedCapacityIds(actor) {
+  return actor.getFlag(MODULE_ID, FLAGS.capacityTrades) ?? []
+}
+
+/**
+ * Capacités apprises qui apportent un bonus égal à rang + 2 sur un test de caractéristique : le joueur peut
+ * renoncer à ce bonus pour gagner des points de compétence (p.226). Détection automatique par la formule
+ * du modifier ; la capacité de rang 1 des voies de peuple est exclue (son bonus est déjà remplacé par la maîtrise).
+ */
+export function getTradeableCapacities(actor) {
+  return actor.items.filter(
+    (item) =>
+      item.type === "capacity" &&
+      item.system.learned &&
+      !isPeopleRankOneCapacity(actor, item) &&
+      (item.system.actions ?? []).some((action) => (action.modifiers ?? []).some(isRankBonusModifier)),
+  )
+}
+
+function getTradePoints(actor, capacity) {
+  return getCapacityPath(actor, capacity)?.system.subtype === "prestige" ? TRADE_POINTS_PRESTIGE : TRADE_POINTS
+}
+
+/** Points gagnés par les capacités échangées encore apprises (une capacité désapprise ou retirée ne compte plus). */
+function getTradePointsTotal(actor) {
+  const traded = getTradedCapacityIds(actor)
+  return getTradeableCapacities(actor)
+    .filter((capacity) => traded.includes(capacity.id))
+    .reduce((total, capacity) => total + getTradePoints(actor, capacity), 0)
+}
+
+/**
+ * Échange (ou rend) le bonus d'une capacité contre des points de compétence. Le retour en arrière n'est
+ * possible que si les points correspondants n'ont pas été dépensés.
+ */
+export async function toggleCapacityTrade(actor, capacityId) {
+  const capacity = getTradeableCapacities(actor).find((c) => c.id === capacityId)
+  if (!capacity) return
+  const traded = getTradedCapacityIds(actor)
+  if (traded.includes(capacityId)) {
+    if (getSkillPointsAvailable(actor) < getTradePoints(actor, capacity)) return
+    await actor.setFlag(MODULE_ID, FLAGS.capacityTrades, traded.filter((id) => id !== capacityId))
+  } else {
+    await actor.setFlag(MODULE_ID, FLAGS.capacityTrades, [...traded, capacityId])
+  }
+}
+
+/** Modèle d'affichage des capacités échangeables pour le template de l'onglet. */
+export function getCapacityTradesViewModel(actor) {
+  const traded = getTradedCapacityIds(actor)
+  const available = getSkillPointsAvailable(actor)
+  return getTradeableCapacities(actor).map((capacity) => {
+    const points = getTradePoints(actor, capacity)
+    const isTraded = traded.includes(capacity.id)
+    return {
+      id: capacity.id,
+      name: capacity.name,
+      pathName: getCapacityPath(actor, capacity)?.name ?? "",
+      points,
+      traded: isTraded,
+      canToggle: !isTraded || available >= points,
     }
   })
 }
@@ -221,6 +306,18 @@ export function wireSkillsTab(application, element) {
     el.addEventListener("click", (event) => {
       event.preventDefault()
       if (application.isEditMode && !el.classList.contains("disabled")) decreaseSkill(actor, el.dataset.skillId)
+    })
+  })
+  tab.querySelectorAll('[data-action="cof2OptionsToggleTrade"]').forEach((el) => {
+    // Classe `disabled` (convention co2) plutôt que l'attribut : une case cochée et `:disabled` affiche un
+    // pseudo-élément parasite avec le style des cases de co2. La case reste donc activable au clavier.
+    el.addEventListener("change", (event) => {
+      event.preventDefault()
+      if (!application.isEditMode || el.classList.contains("disabled")) {
+        el.checked = !el.checked
+        return
+      }
+      toggleCapacityTrade(actor, el.dataset.capacityId)
     })
   })
 }
@@ -468,10 +565,19 @@ function getOwnCapacity(actor, modifier) {
  */
 function isReplacedPeopleBonus(actor, modifier) {
   const capacity = getOwnCapacity(actor, modifier)
-  if (!capacity) return false
-  const path = actor.items.get(foundry.utils.parseUuid(capacity.system.path ?? "")?.id)
+  return !!capacity && isPeopleRankOneCapacity(actor, capacity)
+}
+
+function isPeopleRankOneCapacity(actor, capacity) {
+  const path = getCapacityPath(actor, capacity)
   if (path?.system.subtype !== "people" || !PEOPLE_SKILLS[path.system.slug]) return false
   return path.system.capacities.indexOf(capacity.uuid) === 0
+}
+
+/** Bonus rang + 2 d'une capacité échangée contre des points de compétence (p.226) : ignoré pour tous les tests. */
+function isTradedCapacityBonus(actor, modifier) {
+  const capacity = getOwnCapacity(actor, modifier)
+  return !!capacity && isRankBonusModifier(modifier) && getTradedCapacityIds(actor).includes(capacity.id)
 }
 
 /**
@@ -485,8 +591,8 @@ function isCapacityTestBonus(actor, modifier) {
 
 /**
  * Filtre `skillModifiers` du modèle de personnage co2, seule source des bonus proposés par la fenêtre de
- * jet (`COActor#getSkillBonuses`) : bonus de peuple remplacés pour tous les tests, bonus permanents de
- * capacité en plus pendant un test de compétence. À appeler au hook `init`, réglage actif.
+ * jet (`COActor#getSkillBonuses`) : bonus de peuple remplacés et bonus de capacité échangés pour tous les
+ * tests, bonus permanents de capacité en plus pendant un test de compétence. À appeler au hook `init`, réglage actif.
  */
 export function installPeopleBonusFilter() {
   const CharacterData = CONFIG.Actor.dataModels?.character
@@ -499,7 +605,11 @@ export function installPeopleBonusFilter() {
   Object.defineProperty(CharacterData.prototype, "skillModifiers", {
     configurable: true,
     get() {
-      return original.call(this).filter((m) => !isReplacedPeopleBonus(this.parent, m) && !(currentSkillCheck && isCapacityTestBonus(this.parent, m)))
+      return original
+        .call(this)
+        .filter(
+          (m) => !isReplacedPeopleBonus(this.parent, m) && !isTradedCapacityBonus(this.parent, m) && !(currentSkillCheck && isCapacityTestBonus(this.parent, m)),
+        )
     },
   })
 }

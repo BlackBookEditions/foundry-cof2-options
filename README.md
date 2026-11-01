@@ -35,15 +35,16 @@ Activation : réglage monde **« Système de compétences (Atlas d'Osgild) »** 
 - Quand une compétence devient maîtrisée en cours de carrière via une voie hybride, le bonus déjà investi est doublé.
 - À chaque niveau, 3 points de compétence sont disponibles pour augmenter le bonus d'une compétence (coût : 1 point si elle est maîtrisée, 2 points sinon). Le bonus est plafonné à `niveau + 5` (maximum absolu +15).
 - Le malus d'armure s'applique automatiquement aux tests basés sur l'Agilité ou la Constitution.
+- **Capacités et compétences** : en mode Édition, l'onglet liste les capacités apprises qui donnent rang + 2 à un test de caractéristique (détection automatique par la formule `2 + @rang` / `@rang + 2` du bonus). Cocher une capacité renonce à ce bonus, qui n'est plus proposé dans la fenêtre de jet, et ajoute 4 points de compétence au total (5 pour une capacité de voie de prestige) ; la case ne peut être décochée que si ces points sont encore disponibles.
 
 **Non implémenté** :
-- La section **« Capacités et compétences »** : renoncer au bonus d'une capacité (rang + 2) pour gagner 4 points de compétence (5 pour une capacité de voie de prestige). Les bonus de capacité restent des bonus de tests de caractéristique.
 - La **variante de progression par PEX** (« Cumul des systèmes PEX et compétences »), y compris son nombre de compétences hybrides variable selon le profil (1 à 3) : le module applique la règle de base, 2 compétences par voie hybride.
 - La note du Gnome (« au rang 2 de la voie du gnome, le bonus de +3 s'applique également à la compétence persuasion ») : elle concerne une capacité de rang 2 distincte, avec un bonus chiffré propre aux règles de base de COF, hors du mécanisme de maîtrise ci-dessus.
 
 **Écarts et limitations connus** :
 - Les points de compétence non dépensés sont conservés d'un niveau sur l'autre (le livre impose de les dépenser immédiatement), et le bouton « − » permet de les redistribuer à tout moment.
 - Doublement du bonus à l'acquisition d'une maîtrise : non appliqué quand la maîtrise vient de la voie de peuple (cas d'un personnage qui aurait investi des points dans la compétence avant d'apprendre la capacité de rang 1) ; le bonus doublé n'est pas ramené au plafond `niveau + 5`.
+- Capacités et compétences : les points gagnés en échangeant le bonus d'une capacité doivent être investis dans les compétences du profil dont la capacité est issue ; le module ne le vérifie pas, c'est au MJ de le faire. La détection des capacités échangeables repose sur la formule du bonus : une capacité saisie autrement (ou un faux positif) est à arbitrer par le MJ.
 - La mini-fiche de personnage n'est pas concernée : elle n'affiche pas les compétences.
 - Si une voie hors profil ou une voie de peuple est retirée après investissement de points dans une compétence devenue non-maîtrisée, le bonus déjà investi est conservé tel quel (pas de remboursement rétroactif) ; seul le coût futur par point repasse à 2.
 - Cette option n'est disponible que sur les personnages joueurs (`type: character`), pas sur les PNJ (`encounter`).

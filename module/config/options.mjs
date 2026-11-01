@@ -18,4 +18,5 @@ export const FLAGS = {
   skillPointsSpent: "skillPointsSpent", // Number : total de points de compétence dépensés à vie
   hybridChoices: "hybridChoices", // [{ pathUuid, profileSlug, skills: string[] }] : compétences choisies à l'ouverture d'une voie hors profil
   peopleGrant: "peopleGrant", // { pathUuid, slug: string, skills: string[] } : maîtrise accordée par la voie de peuple (rang 1), slug = celui de la voie
+  capacityTrades: "capacityTrades", // string[] : id des capacités dont le bonus (rang + 2) est échangé contre des points de compétence
 }

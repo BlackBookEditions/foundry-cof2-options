@@ -43,4 +43,30 @@
       </ol>
     </div>
   </div>
+  {{#if unlocked}}
+    {{#with (cof2OptionsTrades actor) as |trades|}}
+      {{#if trades.length}}
+        <div class="section-container">
+          <div class="section-header">
+            <h4>{{localize "COF2OPTIONS.sheet.trades.title"}}</h4>
+          </div>
+          <div class="section-body-no-flex">
+            <p class="cof2-trades-hint">{{localize "COF2OPTIONS.sheet.trades.hint"}}</p>
+            <ol class="cof2-trades-list item-list">
+              {{#each trades as |trade|}}
+                <li class="cof2-trade{{#if trade.traded}} traded{{/if}}">
+                  <label>
+                    <input type="checkbox" data-action="cof2OptionsToggleTrade" data-capacity-id="{{trade.id}}" {{checked trade.traded}} {{#unless trade.canToggle}}class="disabled"{{/unless}} />
+                    <span class="cof2-trade-name">{{trade.name}}</span>
+                    <span class="cof2-trade-path">{{trade.pathName}}</span>
+                    <span class="cof2-trade-points">{{localize "COF2OPTIONS.sheet.trades.points" points=trade.points}}</span>
+                  </label>
+                </li>
+              {{/each}}
+            </ol>
+          </div>
+        </div>
+      {{/if}}
+    {{/with}}
+  {{/if}}
 </section>

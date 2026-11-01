@@ -6,6 +6,7 @@ import {
   getSkillPointsSpent,
   getSkillPointsAvailable,
   getSkillCap,
+  getCapacityTradesViewModel,
   wireSkillsTab,
   installPeopleBonusFilter,
   installSkillCheckTitle,
@@ -51,6 +52,7 @@ Hooks.once("init", () => {
     available: getSkillPointsAvailable(actor),
     cap: getSkillCap(actor),
   }))
+  Handlebars.registerHelper("cof2OptionsTrades", (actor) => getCapacityTradesViewModel(actor))
 
   console.info("COF2 Options | Fin de l'initialisation du module")
 })

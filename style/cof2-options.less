@@ -62,6 +62,50 @@
   }
 }
 
+.cof2-options-skills {
+  .cof2-trades-hint {
+    // L'onglet de co2 (`.tab[data-tab]`) impose `white-space: nowrap`
+    white-space: normal;
+    margin: 0.25em 0.5em;
+    font-size: 0.9em;
+    opacity: 0.8;
+  }
+
+  .cof2-trades-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .cof2-trade label {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.25em 0.5em;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+      .cof2-trade-name {
+        flex: 1 1 auto;
+      }
+
+      .cof2-trade-path {
+        flex: 0 0 auto;
+        opacity: 0.7;
+        font-size: 0.9em;
+      }
+
+      .cof2-trade-points {
+        flex: 0 0 auto;
+        min-width: 4.5em;
+        text-align: right;
+      }
+    }
+
+    .cof2-trade.traded .cof2-trade-name {
+      font-weight: bold;
+    }
+  }
+}
+
 .cof2-hybrid-choice {
   display: flex;
   flex-direction: column;
