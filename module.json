@@ -15,10 +15,21 @@
     "systems": [
       {
         "id": "co2",
-        "type": "system"
+        "type": "system",
+        "compatibility": {
+          "verified": "2.3.12"
+        }
       }
     ],
     "requires": [],
+    "recommends": [
+      {
+        "id": "cof2-base",
+        "type": "module",
+        "manifest": "https://github.com/BlackBookEditions/foundry-cof2-base/releases/latest/download/module.json",
+        "reason": "Profils et voies du Livre des règles, dont dépend la maîtrise des compétences, et mise en page du guide du module"
+      }
+    ],
     "optional": []
   },
   "authors": [

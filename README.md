@@ -10,7 +10,7 @@ Module pour le système **Chroniques Oubliées 2** qui ajoute des règles issues
 Il faut installer le module depuis son manifeste.
 Depuis l'accueil, dans l'onglet Modules :
 - Installer un module
-- Saisir l'url du manifeste : (à compléter au premier release)
+- Saisir l'url du manifeste : `https://github.com/BlackBookEditions/foundry-cof2-options/releases/latest/download/module.json`
 
 ## Fonctionnalités
 

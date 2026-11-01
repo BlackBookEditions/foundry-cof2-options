@@ -1,3 +1,8 @@
+## 0.9.1
+- Guide du module mis à jour : section « Capacités et compétences » de la fiche de personnage, limites et écarts.
+- Manifeste : version de co2 vérifiée (2.3.12) et cof2-base en module recommandé.
+- README : URL du manifeste.
+
 ## 0.9.0
 - Capacités et compétences (Atlas p.226) : en mode Édition, l'onglet Compétences liste les capacités qui donnent rang + 2 à un test de caractéristique ; en cocher une renonce à son bonus et ajoute 4 points de compétence au total (5 pour une voie de prestige).
 - Le compteur de points de compétence affiche le total réel, points des capacités échangées compris.
